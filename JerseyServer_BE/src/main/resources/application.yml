@@ -1,0 +1,66 @@
+server:
+  port: 8080
+#  servlet:
+#    path: /actuator   # Spring MVC dispatcher servlet path. Needs to be different than Jersey's to enable/disable Actuator endpoints access (/info, /health, ...)
+  #  servlet:
+#    context-path: /sys
+  ssl:
+    enabled: true
+    key-alias: jerseyserver_be #For unknown reasons for embedded jetty key alias should be lowercase (in embedded tomcat everything works fine)
+    key-store: "classpath:certificates/JerseyServer_BE.p12"
+    key-store-type: PKCS12
+    key-store-password: 66821e0d49db9f867d484087aec80b4f
+    key-password: 66821e0d49db9f867d484087aec80b4f
+    ciphers: TLS_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_DHE_DSS_WITH_AES_128_CBC_SHA, TLS_DHE_DSS_WITH_AES_256_CBC_SHA
+    enabled-protocols: TLSv1, TLSv1.1, TLSv1.2
+    protocol: TLS
+    client-auth: want
+  jetty:
+    selectors: 10
+    max-http-post-size: 100000
+    acceptors: 20
+
+#security:
+#  require-ssl: true
+
+spring:
+  application:
+    name: Jersey_Angular_CRUD_App
+  profiles:
+    active: default
+  jersey:
+    type: filter
+#    application-path: /     # Jersey dispatcher servlet
+  datasource:
+    platform: h2
+    url: jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_DELAY=-1
+    username: SA
+    password:
+    driverClassName: org.h2.Driver
+    hikari:
+      maximum-pool-size: 10
+  h2:
+    console:
+      enabled: true
+      path: /dbconsole
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none
+#    properties:
+#      org.hibernate.envers.audit_table_suffix: _history
+#      org.hibernate.envers.default_schema: auditlog
+
+info:
+  author: Nizami Islamovs
+  email: nizamiislamovs@gmail.com
+  name: ${spring.application.name}
+  description: Small CRUD application, based on Jersey, Springboot, Angular
+  environment: ${spring.profiles.active}
+  version: 1.0.0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["health", "info", "metrics"]

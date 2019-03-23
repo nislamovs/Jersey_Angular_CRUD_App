@@ -1,0 +1,42 @@
+Lombok                                                                                  OK
+Logging                                                                                 OK
+H2                                                                                      OK
+ExceptionHandler                                                                        OK
+Multipart setup                                                                         OK
+Create logging for every controller path                                                OK
+Create join with photo table                                                            OK
+Entities                                                                                OK
+Create DAO to DTO mapping                                                               OK
+Create DTO's                                                                            OK
+Create DTO validation rules                                                             OK
+Create DAO validation rules                                                             OK
+JPA audit (time when created, modified).                                                OK
+
+Add transactions.                                                                       --
+Use @Transient                                                                          --
+Audit log table                                                                         --
+Create pagination while requesting/viewing data from db                                 OK
+Check multipart size in request                                                         OK
+
+swagger                                                                                 write api doc
+create api for user                                                                     OK
+add to README.MD info about swagger.json path                                           OK
+Make possible to generate swagger documentation (PDF)                                   --
+
+Integration tests                                                                       --
+Unit tests                                                                              --
+
+Check necessity for response messages after successful operation                        --
+Create bash scripts for testing API functionality                                       OK
+Create task in gradle to launch/build FE/BE                                             --
+Docker - generate image (use spotify plugin)                                            --
+Spring actuator - setup endpoints                                                       OK
+
+
+Write frontend using Angular 7                                                          --
+
+-----------------------------------   BUGS:   ------------------------------------------
+
+Make possible to run from console (fix standalone launch)                               --
+Redirect from http to https                                                             --
+Swagger launches, but not working (cannot catch endpoints)                              OK
