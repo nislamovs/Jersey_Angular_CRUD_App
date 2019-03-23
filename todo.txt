@@ -31,6 +31,8 @@ Create bash scripts for testing API functionality                               
 Create task in gradle to launch/build FE/BE                                             --
 Docker - generate image (use spotify plugin)                                            --
 Spring actuator - setup endpoints                                                       OK
+Add .idea to gitignore
+Check alignment in README
 
 
 Write frontend using Angular 7                                                          --
@@ -40,3 +42,4 @@ Write frontend using Angular 7                                                  
 Make possible to run from console (fix standalone launch)                               --
 Redirect from http to https                                                             --
 Swagger launches, but not working (cannot catch endpoints)                              OK
+Time in response differs by 2 hours

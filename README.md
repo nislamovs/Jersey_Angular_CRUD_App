@@ -43,6 +43,7 @@ Status : development
  
 - Open browser, type `localhost:4200` in url field and You'll see frontend part.
 
+
 ####Certificates:
 
 If You want to regenerate certificates, You should visit folder `Scripts/system/certificates` and 
