@@ -3,7 +3,7 @@ Small CRUD App based on Jersey and Angular 7.
 
 Status : development
 
-####Stack:
+#### Stack:
 
     Embedded Jetty with https 
     Jersey
@@ -15,7 +15,7 @@ Status : development
     Docker
     Angular7
 
-####How to build:
+#### How to build:
  
 **Backend:**
 
@@ -44,7 +44,7 @@ Status : development
 - Open browser, type `localhost:4200` in url field and You'll see frontend part.
 
 
-####Certificates:
+#### Certificates:
 
 If You want to regenerate certificates, You should visit folder `Scripts/system/certificates` and 
 there run script `generateCertificates.sh`. If You want to change key params, You should change those in script.
