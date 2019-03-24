@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Slf4j
 @SpringBootApplication
 @EnableJpaRepositories
-@EnableTransactionManagement
 @EnableSpringDataWebSupport
 public class JerseydemoApplication {
 

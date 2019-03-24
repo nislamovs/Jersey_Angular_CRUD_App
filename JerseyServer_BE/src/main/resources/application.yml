@@ -47,9 +47,12 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: none
-#    properties:
-#      org.hibernate.envers.audit_table_suffix: _history
-#      org.hibernate.envers.default_schema: auditlog
+    properties:
+#      dialect: org.hibernate.dialect.H2Dialect
+      format_sql: true
+#      id.new_generator_mappings: true
+      org.hibernate.envers.default_schema: audit
+      #      org.hibernate.envers.audit_table_suffix: _history
 
 info:
   author: Nizami Islamovs
@@ -58,6 +61,11 @@ info:
   description: Small CRUD application, based on Jersey, Springboot, Angular
   environment: ${spring.profiles.active}
   version: 1.0.0
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.envers: debug
 
 management:
   endpoints:

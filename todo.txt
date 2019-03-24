@@ -15,6 +15,7 @@ JPA audit (time when created, modified).                                        
 Add transactions.                                                                       --
 Use @Transient                                                                          --
 Audit log table                                                                         --
+Add revisions table                                                                     --
 Create pagination while requesting/viewing data from db                                 OK
 Check multipart size in request                                                         OK
 
@@ -31,8 +32,8 @@ Create bash scripts for testing API functionality                               
 Create task in gradle to launch/build FE/BE                                             --
 Docker - generate image (use spotify plugin)                                            --
 Spring actuator - setup endpoints                                                       OK
-Add .idea to gitignore
-Check alignment in README
+Add .idea to gitignore                                                                  OK
+Check alignment in README                                                               OK
 
 
 Write frontend using Angular 7                                                          --

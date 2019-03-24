@@ -1,7 +1,7 @@
 package com.jerseyexample.app.model;
 
 import lombok.*;
-//import org.hibernate.envers.Audited;
+import org.hibernate.envers.Audited;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -14,11 +14,12 @@ import javax.persistence.*;
 @Entity(name="Users")
 @Table(name="users")
 //@EntityListeners(AuditingEntityListener.class)
-//@Audited
+@Audited
 public class UserEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", updatable = false, nullable = false)
     private Long id;
 
     @NotEmpty

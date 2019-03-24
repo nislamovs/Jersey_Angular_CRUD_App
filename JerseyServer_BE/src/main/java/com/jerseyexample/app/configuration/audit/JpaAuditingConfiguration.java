@@ -1,4 +1,4 @@
-package com.jerseyexample.app.configuration;
+package com.jerseyexample.app.configuration.audit;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

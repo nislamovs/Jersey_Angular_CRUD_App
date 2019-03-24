@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-//import org.hibernate.envers.Audited;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 
@@ -13,11 +13,12 @@ import javax.persistence.*;
 @Table(name = "user_photos")
 @NoArgsConstructor
 @AllArgsConstructor
-//@Audited
+@Audited
 public class UserPhotoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", updatable = false, nullable = false)
     private Long id;
 
     @Lob

@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 public class JerseyConfiguration extends ResourceConfig {
 
     private LoggingFeature JERSEY_LOGGER = new LoggingFeature(Logger.getLogger(LoggingFeature.DEFAULT_LOGGER_NAME),
-                                            Level.INFO, LoggingFeature.Verbosity.PAYLOAD_ANY, 10000);
+                                            Level.INFO, LoggingFeature.Verbosity.PAYLOAD_ANY, 1000);
 
     public JerseyConfiguration()
     {

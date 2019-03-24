@@ -8,7 +8,7 @@ Status : development
     Embedded Jetty with https 
     Jersey
     Springboot 2
-    Spring Data
+    Spring Data (audit, revisions...)
     Logback
     Lombok
     Swagger
