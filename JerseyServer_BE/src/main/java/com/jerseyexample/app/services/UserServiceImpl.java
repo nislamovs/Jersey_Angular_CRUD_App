@@ -14,13 +14,14 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Slf4j
 @Service("userService")
+@Transactional
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
@@ -30,6 +31,7 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
+    @Override
     public UserEntity findById(Long id) throws UserNotFoundException {
         Optional<UserEntity> user = userRepository.findById(id);
         user.orElseThrow(() -> new UserNotFoundException("Username with id [" + id + "] not found."));
@@ -37,6 +39,7 @@ public class UserServiceImpl implements UserService {
         return user.get();
     }
 
+    @Override
     public UserEntity findByName(String name) throws UserNotFoundException {
         Optional<UserEntity> user = userRepository.findByFirstnameContainingIgnoreCase(name);
         user.orElseThrow(() -> new UserNotFoundException("Username with name [" + name + "] not found."));
@@ -44,6 +47,7 @@ public class UserServiceImpl implements UserService {
         return user.get();
     }
 
+    @Override
     public void saveUser(UserRequest userRequest) {
         UserEntity user = UserConverter.toEntity(userRequest);
         user.setUserPhoto(UserPhotoEntity.builder()
@@ -54,6 +58,7 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+    @Override
     public void updateUser(UserRequest user) throws UserNotFoundException {
         if (isUserExist(user)) {
             saveUser(user);
@@ -62,6 +67,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
     public void deleteUser(Long id) throws UserNotFoundException {
         if (isUserExist(id)) {
             userRepository.deleteById(id);
@@ -70,15 +76,17 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
     public void deleteAllUsers(){
         userRepository.deleteAll();
     }
 
+    @Override
     public List<UserEntity> findAllUsers() {
-
         return userRepository.findAll();
     }
 
+    @Override
     public Page<UserEntity> findAllUsers(Integer pageSize, Integer pageNumber, String orderDirection, String orderBy) {
         if (pageNumber == null) pageNumber = 1;
         if (pageSize == null) pageSize = 5;
@@ -89,14 +97,17 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll(selectedRecords);
     }
 
+    @Override
     public boolean isUserExist(UserRequest user) {
         return userRepository.existsById(user.getId());
     }
 
+    @Override
     public boolean isUserExist(long id) {
         return userRepository.existsById(id);
     }
 
+    @Override
     public long getUsersCount() {
         return userRepository.count();
     }

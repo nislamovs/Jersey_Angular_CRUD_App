@@ -11,6 +11,7 @@ import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
 import javax.annotation.Resource;
@@ -70,6 +71,7 @@ public class UserResource implements UserResourceDocs {
     @GET
     @Path("/users/list")
     @Produces("application/json")
+    @Transactional(readOnly = true)
     public Response getAllUsers() throws URISyntaxException {
 
         log.info("Retrieving user list...");
@@ -80,6 +82,7 @@ public class UserResource implements UserResourceDocs {
     @GET
     @Path("/users")
     @Produces("application/json")
+    @Transactional(readOnly = true)
     public Response getPageOfUsers(@DefaultValue("5")   @QueryParam("PageSize") Integer pageSize,
                                    @DefaultValue("1")   @QueryParam("PageNumber") Integer pageNumber,
                                    @DefaultValue("asc") @QueryParam("OrderDirection") String orderDirection,
@@ -98,6 +101,7 @@ public class UserResource implements UserResourceDocs {
     @POST
     @Path("/users")
     @Consumes("application/json")
+    @Transactional
     public Response createUser(@Valid UserRequest userReq) throws URISyntaxException {
 
         log.info("Creating new user : [" + userReq.getFirstname() + " " + userReq.getLastname() + "]");
@@ -109,6 +113,7 @@ public class UserResource implements UserResourceDocs {
     @GET
     @Path("/users/{id}")
     @Produces("application/json")
+    @Transactional(readOnly = true)
     public Response getUserById(@PathParam("id") @Min(value = 0, message = "Request params are invalid.") long id) throws URISyntaxException {
 
         log.info("Retrieving user by id: [" + id + "]");
@@ -119,18 +124,20 @@ public class UserResource implements UserResourceDocs {
     @Path("/users")
     @Consumes("application/json")
     @Produces("application/json")
+    @Transactional
     public Response updateUser(@Valid UserRequest userReq) throws URISyntaxException {
 
         log.info("Updating user by id: [" + userReq.getId() + "]");
         userService.saveUser(userReq);
 
-        return Response.status(Response.Status.NO_CONTENT).build();
+        return Response.status(Response.Status.OK).build();
     }
 
     @DELETE
     @Path("/users/{id}")
     @Consumes("application/json")
     @Produces("application/json")
+    @Transactional
     public Response deleteUser(@PathParam("id") @Min(value = 1, message = "Request params are invalid.") long id) throws URISyntaxException {
 
         log.info("Deleting user by id: [" + id + "]");

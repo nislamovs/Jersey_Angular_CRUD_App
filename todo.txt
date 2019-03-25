@@ -11,11 +11,9 @@ Create DTO's                                                                    
 Create DTO validation rules                                                             OK
 Create DAO validation rules                                                             OK
 JPA audit (time when created, modified).                                                OK
-
-Add transactions.                                                                       --
-Use @Transient                                                                          --
-Audit log table                                                                         --
-Add revisions table                                                                     --
+Add transactions.                                                                       OK
+Audit log table                                                                         OK
+Add revisions table                                                                     OK
 Create pagination while requesting/viewing data from db                                 OK
 Check multipart size in request                                                         OK
 
@@ -26,8 +24,10 @@ Make possible to generate swagger documentation (PDF)                           
 
 Integration tests                                                                       --
 Unit tests                                                                              --
+Test coverage                                                                           --
+Test coverage - show in readme.md                                                       --
 
-Check necessity for response messages after successful operation                        --
+Check necessity for response messages after successful operation                        OK
 Create bash scripts for testing API functionality                                       OK
 Create task in gradle to launch/build FE/BE                                             --
 Docker - generate image (use spotify plugin)                                            --
@@ -43,4 +43,6 @@ Write frontend using Angular 7                                                  
 Make possible to run from console (fix standalone launch)                               --
 Redirect from http to https                                                             --
 Swagger launches, but not working (cannot catch endpoints)                              OK
-Time in response differs by 2 hours
+Time in response differs by 2 hours                                                     --
+Doesn't write image value to audit revision table                                       --
+Doesn't write audit log field values to revision table                                  --
