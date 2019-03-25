@@ -2,10 +2,8 @@ package com.jerseyexample.app.controller;
 
 import com.jerseyexample.app.controller.docs.UserResourceDocs;
 import com.jerseyexample.app.converters.UserConverter;
-import com.jerseyexample.app.domain.exceptions.UserNotFoundException;
 import com.jerseyexample.app.domain.requests.UserRequest;
 import com.jerseyexample.app.model.UserEntity;
-import com.jerseyexample.app.repository.UserRepository;
 import com.jerseyexample.app.services.UserService;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
@@ -32,44 +30,8 @@ public class UserResource implements UserResourceDocs {
     @Inject
     UserService userService;
 
-
-    //---------------------------------------------------------------------------------------------------
-
-    //TODO: delete this after testing
-    @Inject
-    UserRepository userRepository;
-
     @GET
-    @Path("/usertest")
-    @Produces("application/json")
-    public Response getUserTest() throws URISyntaxException {
-        return Response.status(Response.Status.OK).entity(userService.findById(1L)).build();
-    }
-     
-    @GET
-    @Path("/userupdate")
-    @Produces("application/json")
-    public Response updateUserTest() throws URISyntaxException, UserNotFoundException {
-
-        UserEntity user = userService.findById(1L);
-        user.setFirstname(user.getFirstname() + "123");
-        userRepository.save(user);
-
-        return Response.status(Response.Status.OK).build();
-    }
-
-    @GET
-    @Path("/usererror")
-    @Produces("application/json")
-    public String makeErr() {
-        throw new UserNotFoundException("yomayo!");
-    }
-
-
-    //----------------------------------------------------------------------------------------------------
-
-    @GET
-    @Path("/users/list")
+    @Path("/users/all")
     @Produces("application/json")
     @Transactional(readOnly = true)
     public Response getAllUsers() throws URISyntaxException {
@@ -102,10 +64,10 @@ public class UserResource implements UserResourceDocs {
     @Path("/users")
     @Consumes("application/json")
     @Transactional
-    public Response createUser(@Valid UserRequest userReq) throws URISyntaxException {
+    public Response createUser(@Valid UserRequest userRequest) throws URISyntaxException {
 
-        log.info("Creating new user : [" + userReq.getFirstname() + " " + userReq.getLastname() + "]");
-        userService.saveUser(userReq);
+        log.info("Creating new user : [" + userRequest.getFirstname() + " " + userRequest.getLastname() + "]");
+        userService.saveUser(userRequest);
 
         return Response.status(Response.Status.CREATED).build();
     }
@@ -138,7 +100,7 @@ public class UserResource implements UserResourceDocs {
     @Consumes("application/json")
     @Produces("application/json")
     @Transactional
-    public Response deleteUser(@PathParam("id") @Min(value = 1, message = "Request params are invalid.") long id) throws URISyntaxException {
+    public Response deleteUserById(@PathParam("id") @Min(value = 1, message = "Request params are invalid.") long id) throws URISyntaxException {
 
         log.info("Deleting user by id: [" + id + "]");
         userService.deleteUser(id);

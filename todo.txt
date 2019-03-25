@@ -17,7 +17,7 @@ Add revisions table                                                             
 Create pagination while requesting/viewing data from db                                 OK
 Check multipart size in request                                                         OK
 
-swagger                                                                                 write api doc
+swagger                                                                                 OK
 create api for user                                                                     OK
 add to README.MD info about swagger.json path                                           OK
 Make possible to generate swagger documentation (PDF)                                   --
