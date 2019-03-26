@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-PHOTO=`cat ../res/photo.png | base64`
-ID=2
+PHOTO=`cat ./res/photo.png | base64`
+
+DEFAULTVALUE=1
+ID=${1:-$DEFAULTVALUE}
 
 CMD=$(curl -kvvv -X PUT \
     -H 'Content-Type: application/json' \
@@ -10,3 +12,5 @@ CMD=$(curl -kvvv -X PUT \
     https://localhost:8080/api/users)
 
 echo "$CMD" 2>/dev/null | jq '.'
+
+./getUserById.sh $ID

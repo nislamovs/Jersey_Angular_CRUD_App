@@ -40,7 +40,7 @@ Write frontend using Angular 7                                                  
 
 -----------------------------------   BUGS:   ------------------------------------------
 
-Make possible to run from console (fix standalone launch)                               --
+Make possible to run from console (fix standalone launch)                               OK
 Redirect from http to https                                                             --
 Swagger launches, but not working (cannot catch endpoints)                              OK
 Time in response differs by 2 hours                                                     --

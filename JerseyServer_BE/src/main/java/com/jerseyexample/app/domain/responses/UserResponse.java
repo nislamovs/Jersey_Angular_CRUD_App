@@ -1,5 +1,6 @@
 package com.jerseyexample.app.domain.responses;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -7,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -41,8 +43,10 @@ public class UserResponse implements Serializable {
     private byte[] photoImage;
 
     @ApiModelProperty(required = true, value = "Creation date of current user")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss z", timezone = "EET")
     private Date createdDate;
 
     @ApiModelProperty(required = true, value = "Last modification date of current user")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss z", timezone = "EET")
     private Date modifiedDate;
 }

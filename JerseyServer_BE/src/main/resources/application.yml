@@ -20,9 +20,6 @@ server:
     max-http-post-size: 100000
     acceptors: 20
 
-#security:
-#  require-ssl: true
-
 spring:
   application:
     name: Jersey_Angular_CRUD_App

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-ID=2
+DEFAULTVALUE=1
+ID=${1:-$DEFAULTVALUE}
 
 #curl -kvvv -XGET https://localhost:8080/api/users/2 2>/dev/null | jq '.'
 

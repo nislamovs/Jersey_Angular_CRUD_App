@@ -1,5 +1,6 @@
 package com.jerseyexample.app.configuration;
 
+import com.jerseyexample.app.controller.TestingResource;
 import com.jerseyexample.app.controller.UserResource;
 import io.swagger.jaxrs.config.BeanConfig;
 import io.swagger.jaxrs.config.SwaggerConfigLocator;
@@ -23,7 +24,7 @@ import java.util.logging.Logger;
 public class JerseyConfiguration extends ResourceConfig {
 
     private LoggingFeature JERSEY_LOGGER = new LoggingFeature(Logger.getLogger(LoggingFeature.DEFAULT_LOGGER_NAME),
-                                            Level.INFO, LoggingFeature.Verbosity.PAYLOAD_ANY, 1000);
+                                            Level.INFO, LoggingFeature.Verbosity.PAYLOAD_ANY, 100000);
 
     public JerseyConfiguration()
     {
@@ -34,12 +35,14 @@ public class JerseyConfiguration extends ResourceConfig {
     private void registerEndpoints() {
         register(RequestContextFilter.class);
         register(MultiPartFeature.class);
-        packages("com.jerseyexample.app");
+//        packages("com.jerseyexample.app");
 
         property(ServletProperties.FILTER_FORWARD_ON_404, true);
 
         register(JERSEY_LOGGER);
+
         register(UserResource.class);
+        register(TestingResource.class);
 
         // Access through /<Jersey's servlet path>/application.wadl
         register(WadlResource.class);
