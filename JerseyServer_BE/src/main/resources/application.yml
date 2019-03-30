@@ -4,6 +4,7 @@ server:
 #    path: /actuator   # Spring MVC dispatcher servlet path. Needs to be different than Jersey's to enable/disable Actuator endpoints access (/info, /health, ...)
   #  servlet:
 #    context-path: /sys
+
   ssl:
     enabled: true
     key-alias: jerseyserver_be #For unknown reasons for embedded jetty key alias should be lowercase (in embedded tomcat everything works fine)
@@ -15,6 +16,7 @@ server:
     enabled-protocols: TLSv1, TLSv1.1, TLSv1.2
     protocol: TLS
     client-auth: want
+
   jetty:
     selectors: 10
     max-http-post-size: 100000
@@ -31,6 +33,8 @@ spring:
   datasource:
     platform: h2
     url: jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_DELAY=-1
+    schema: classpath*:db/initDB.sql
+    data:   classpath*:db/populateDB.sql
     username: SA
     password:
     driverClassName: org.h2.Driver

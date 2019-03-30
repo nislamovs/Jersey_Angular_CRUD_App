@@ -27,10 +27,6 @@ Status : development
 
 - The service will launch on `8080` port. Endpoints will be accessible from `https://localhost:8080/api/`.
 
-- Swagger ui will be accessible from `https://localhost:8080/swagger-ui.html`.
-
-- Swagger json will be accessible from `https://localhost:8080/api/swagger.json`.
-
 - Spring actuator endpoints will be available from `https://localhost:8080/actuator`.
 
 - H2 in-memory storage is available from `https://localhost:8080/dbconsole`.
@@ -43,6 +39,13 @@ Status : development
  
 - Open browser, type `localhost:4200` in url field and You'll see frontend part.
 
+**API Docs:**
+
+- Swagger ui will be accessible from `https://localhost:8080/swagger-ui.html`.
+
+- Swagger json will be accessible from `https://localhost:8080/api/swagger.json`.
+
+- If You need API docs in pdf/html format, run: ```gradle clean asciidoctor```. Then go to ```Jersey_Angular_CRUD_App/JerseyServer_BE/build/```, where You will find documentation in both formats. 
 
 #### Certificates:
 

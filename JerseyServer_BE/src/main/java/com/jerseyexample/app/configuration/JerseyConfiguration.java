@@ -35,6 +35,7 @@ public class JerseyConfiguration extends ResourceConfig {
     private void registerEndpoints() {
         register(RequestContextFilter.class);
         register(MultiPartFeature.class);
+//Necessary to exclude to make possible launch standalone jar
 //        packages("com.jerseyexample.app");
 
         property(ServletProperties.FILTER_FORWARD_ON_404, true);
