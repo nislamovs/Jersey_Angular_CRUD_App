@@ -45,10 +45,6 @@ CREATE TABLE AUDIT.USERS_AUD (
     address VARCHAR,
     email VARCHAR,
     phone VARCHAR,
-    createdby VARCHAR,
-    created_date timestamp,
-    modifiedby VARCHAR,
-    last_modified_date timestamp,
 
     PRIMARY KEY (ID, REV)
 );
@@ -61,10 +57,6 @@ CREATE TABLE AUDIT.USER_PHOTOS_AUD (
     REVTYPE TINYINT,
 
     photo IMAGE NOT NULL,
-    createdby VARCHAR,
-    created_date timestamp,
-    modifiedby VARCHAR,
-    last_modified_date timestamp,
 
     PRIMARY KEY (ID, REV)
 );

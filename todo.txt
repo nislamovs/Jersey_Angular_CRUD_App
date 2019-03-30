@@ -43,6 +43,6 @@ Write frontend using Angular 7                                                  
 Make possible to run from console (fix standalone launch)                               OK
 Redirect from http to https                                                             --
 Swagger launches, but not working (cannot catch endpoints)                              OK
-Time in response differs by 2 hours                                                     --
-Doesn't write image value to audit revision table                                       --
-Doesn't write audit log field values to revision table                                  --
+Time in response differs by 2 hours                                                     OK
+Doesn't write image value to audit revision table                                       OK
+Doesn't write audit log field values to revision table                                  OK
