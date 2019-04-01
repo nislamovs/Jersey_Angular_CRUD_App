@@ -21,7 +21,7 @@ Status : development
 
 - Go to `JerseyServer_BE` directory and run command `gradle build`.
 
-- Then go to `Jersey_Angular_CRUD_App/JerseyServer_BE/build/libs/` directory and find there file `jerseyexample-1.0.0.jar`.
+- Then go to `Jersey_Angular_CRUD_App/JerseyServer_BE/build/` directory and find there file `jerseyexample-1.0.0.jar`.
 
 - Run it with `java -jar jerseyexample-1.0.0.jar`.
 
@@ -45,7 +45,13 @@ Status : development
 
 - Swagger json will be accessible from `https://localhost:8080/api/swagger.json`.
 
-- If You need API docs in pdf/html format, run: ```gradle clean asciidoctor```. Then go to ```Jersey_Angular_CRUD_App/JerseyServer_BE/build/```, where You will find documentation in both formats. 
+- If You need API docs in pdf/html format, run: ```gradle clean asciidoctor```. Then go to ```Jersey_Angular_CRUD_App/JerseyServer_BE/build/asciidoc```, where You will find documentation in both formats.
+
+**Docker:** 
+
+- To build docker image, go to project root directory and there run ```./gradlew clean build docker```
+
+- To export image in separate tar archive, go to _docker scripts directory_ ```Jersey_Angular_CRUD_App/scripts/docker```, and there run script ```create_image.sh```. You will find docker image (in tar format) in build directory: ```Jersey_Angular_CRUD_App/JerseyServer_BE/build/docker```.  
 
 #### Certificates:
 
