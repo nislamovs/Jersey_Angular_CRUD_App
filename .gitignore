@@ -38,3 +38,5 @@ logs/
 lib/
 
 **/stuff/
+./package-lock.json
+**/out/

@@ -11,6 +11,7 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
+import com.jerseyexample.app.domain.exceptions.ImageConversionException;
 import com.jerseyexample.app.domain.exceptions.UserNotFoundException;
 import com.jerseyexample.app.domain.responses.ErrorResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -25,8 +26,12 @@ public class ExceptionHandler implements ExceptionMapper<Throwable> {
 
     @Override
     public Response toResponse(Throwable ex) {
+        ex.printStackTrace();
+        if (ex instanceof ValidationException
+                || ex instanceof JsonParseException
+                || ex instanceof JsonMappingException
+                || ex instanceof ImageConversionException) {
 
-        if (ex instanceof ValidationException || ex instanceof JsonParseException || ex instanceof JsonMappingException) {
             return buildError(BAD_REQUEST, ex);
         }
 

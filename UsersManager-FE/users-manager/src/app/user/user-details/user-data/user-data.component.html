@@ -1,0 +1,75 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="500px" fxFlex.xs="100%">
+    <mat-card-title>User details</mat-card-title>
+    <mat-card-content>
+      <div fxLayout="column wrap" fxLayoutGap="30px">
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex><strong>Firstname:</strong></div>
+          <div fxFlex>{{user?.firstname}}</div>
+        </div>
+
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex><strong>Lastname:</strong></div>
+          <div fxFlex>{{user?.lastname}}</div>
+        </div>
+
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex><strong>Birthdate:</strong></div>
+          <div fxFlex>{{user?.birthdate}}</div>
+        </div>
+
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex><strong>Email:</strong></div>
+          <div fxFlex>{{user?.email}}</div>
+        </div>
+
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex><strong>Address:</strong></div>
+          <div fxFlex>{{user?.address}}</div>
+        </div>
+
+        <div fxLayout="row wrap" fxFlex>
+          <div fxFlex><strong>Phone:</strong></div>
+          <div fxFlex>{{user?.phone}}</div>
+        </div>
+
+        <!--<div fxLayout="row wrap" fxFlex *ngIf='user?.accounts.length <= 2; else advancedUser'>-->
+        <div fxLayout="row wrap" fxFlex >
+          <div fxFlex><strong>Type of user:</strong></div>
+          <div fxFlex class="beginner-color">Beginner user.</div>
+        </div>
+
+        <ng-template #advancedUser>
+          <div fxLayout="row wrap" fxFlex>
+            <div fxFlex><strong>Type of user:</strong></div>
+            <div fxFlex class="advanced-color">Advanced user</div>
+          </div>
+        </ng-template>
+
+        <div fxLayout="row wrap" fxFlex >
+          <div fxFlex><strong>Photo:</strong></div>
+          <div fxFlex></div>
+        </div>
+
+        <div fxLayout="column" fxFlexFill>
+          <div fxFlex>
+          <img class="image" [src]="'data:image/png;base64,'+user?.photoImage" />
+          </div>
+        </div>
+
+      </div>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+      <mat-form-field>
+        <mat-select placeholder="Show user description" (selectionChange)="onChange($event)">
+          <mat-option *ngFor="let opt of selectOptions" [value]="opt.value">
+            {{opt.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-actions>
+
+  </mat-card>
+</section>

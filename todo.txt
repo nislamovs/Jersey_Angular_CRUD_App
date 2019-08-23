@@ -25,24 +25,63 @@ Integration tests                                                               
 Unit tests                                                                              --
 Unit tests logging                                                                      --
 Test coverage                                                                           --
-Test coverage - show in readme.md                                                       --
+Test coverage - show in readme.md (codecov badge)                                       --
 
 Check necessity for response messages after successful operation                        OK
 Create bash scripts for testing API functionality                                       OK
-Create task in gradle to launch/build FE/BE                                             --
-Docker - generate image (use spotify plugin)                                            --
-Docker - create bash scripts for better management                                      --
+Create task in gradle to launch/build FE/BE                                             OK
+Docker - generate image                                                                 OK
+Docker - create bash scripts for better management                                      OK
 Spring actuator - setup endpoints                                                       OK
 Add .idea to gitignore                                                                  OK
 Check alignment in README                                                               OK
 
+Fix problems with tasks in gradle ()                                                    --
+Create Docker image for FE                                                              --
+Create docker compose script                                                            --
+
 
 Write frontend using Angular 7                                                          --
+Prettify FE menu's                                                                      --
+
+create page (navbar)                                                                    ok
+create add user func/page                                                               ok
+create validation                                                                       ok
+create userlist/pagination                                                              ok
+create filters                                                                          ok
+
+Gradle modules for FE and BE                                                            --
+vulnerabilities badge                                                                   --
+
+Review Angular directory structure                                                      --
+Angular CORS issue                                                                      --
+
+Rename account data to user additional data (text message, few more data())             OK
+    - add possibility to add this during user creation                                  OK
+        (text area with symbol decrease count)
+    - add possibility to display it / hide it                                           OK
+    - add possibility to update it                                                      OK
+User update                                                                             OK
+
+image resize and storage into db in separate column (icon)                              OK
+Create new user functionality                                                           OK
+Upload user photo                                                                       OK
+Rename Owner to User                                                                    OK
+populate icons in db                                                                    OK
+resize existing images                                                                  OK
+set date time picker 20 years before today                                              OK
+Scroll profiles left/right                                                              OK
+User delete                                                                             OK
+Add possibility to add birthdate                                                        OK
+Autopopulate birthdates                                                                 OK
 
 -----------------------------------   BUGS:   ------------------------------------------
 
+User creation - fix progress bar                                                        --
+Fix birthdate bug on update                                                             --
+Fix couple of photos - incorrect size                                                   OK
 Make possible to run from console (fix standalone launch)                               OK
-Redirect from http to https                                                             --
+Redirect from http to https                                                             -- (probably Jetty bug)
 Swagger launches, but not working (cannot catch endpoints)                              OK
 Time in response differs by 2 hours                                                     OK
 Doesn't write image value to audit revision table                                       OK

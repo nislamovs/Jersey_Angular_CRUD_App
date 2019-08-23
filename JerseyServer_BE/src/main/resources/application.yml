@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 #  servlet:
 #    path: /actuator   # Spring MVC dispatcher servlet path. Needs to be different than Jersey's to enable/disable Actuator endpoints access (/info, /health, ...)
   #  servlet:
@@ -19,7 +19,7 @@ server:
 
   jetty:
     selectors: 10
-    max-http-post-size: 100000
+    max-http-post-size: 10000000
     acceptors: 20
 
 spring:
@@ -27,8 +27,8 @@ spring:
     name: Jersey_Angular_CRUD_App
   profiles:
     active: default
-  jersey:
-    type: filter
+#  jersey:
+#    type: filter
 #    application-path: /     # Jersey dispatcher servlet
   datasource:
     platform: h2

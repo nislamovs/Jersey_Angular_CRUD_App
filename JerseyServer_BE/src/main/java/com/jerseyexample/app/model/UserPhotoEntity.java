@@ -24,4 +24,8 @@ public class UserPhotoEntity {
     @Lob
     @Column(name = "photo")
     private byte[] photoImage;
+
+    @Lob
+    @Column(name = "icon")
+    private byte[] photoIcon;
 }

@@ -4,20 +4,21 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
+import java.time.LocalDateTime;
 
-@Data
+@Data @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @ApiModel
-public class UserRequest implements Serializable {
+public class UserRequest {
 
     @ApiModelProperty(required = false, value = "User id", example = "1")
     private Long id;
@@ -47,10 +48,26 @@ public class UserRequest implements Serializable {
     @NotEmpty(message = "Phone cannot be empty.")
     private String phone;
 
+    @ApiModelProperty(required = true, value = "User birthdate", example = "11.02.1966")
+    @NotEmpty(message = "Birthdate cannot be empty.")
+    private LocalDateTime birthdate;
+
     @ApiModelProperty(required = true, value = "User photo in png format")
     @NotEmpty(message = "Photo cannot be empty.")
     @Size(max = 30000, message = "Image size is too big.")
     private byte[] photoImage;
+
+    @ApiModelProperty(required = false, value = "User description")
+    @Size(max = 30000, message = "User description field size is too big.")
+    private String description;
+
+    @ApiModelProperty(required = false, value = "User skills")
+    @Size(max = 30000, message = "User skills field  size is too big.")
+    private String skills;
+
+    @ApiModelProperty(required = false, value = "User experience")
+    @Size(max = 30000, message = "User experience field  size is too big.")
+    private String experience;
 }
 
 

@@ -5,6 +5,7 @@ import org.hibernate.envers.Audited;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 
 @EqualsAndHashCode(callSuper = true)
@@ -38,8 +39,15 @@ public class UserEntity extends BaseEntity {
     @Column(name="phone", nullable=false)
     private String phone;
 
+    @Column(name="birthdate", nullable=false)
+    private LocalDateTime birthdate;
+
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     private UserPhotoEntity userPhoto;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    private UserDescriptionEntity userDescription;
 
 }

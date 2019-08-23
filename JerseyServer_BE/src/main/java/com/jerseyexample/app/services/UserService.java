@@ -1,11 +1,13 @@
 package com.jerseyexample.app.services;
 
+import com.jerseyexample.app.domain.exceptions.ImageConversionException;
 import com.jerseyexample.app.domain.exceptions.UserNotFoundException;
 import com.jerseyexample.app.domain.requests.UserRequest;
 import com.jerseyexample.app.model.UserEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface UserService {
@@ -14,7 +16,7 @@ public interface UserService {
 
     UserEntity findByName(String name) throws UserNotFoundException;
 
-    void saveUser(UserRequest user);
+    void saveUser(UserRequest user) throws ImageConversionException;
 
     void updateUser(UserRequest user) throws UserNotFoundException;
 

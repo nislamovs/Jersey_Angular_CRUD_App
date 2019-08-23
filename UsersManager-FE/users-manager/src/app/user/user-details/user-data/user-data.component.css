@@ -1,0 +1,30 @@
+mat-card-content, mat-card-title, mat-card-actions {
+  text-align: center;
+}
+
+mat-card-content{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.advanced-color{
+  color: #3f51b5;
+}
+
+.beginner-color{
+  color: #f44336;
+}
+
+.image {
+  border: 1px solid #9E9EC4;
+  border-radius: 3px;
+  padding: 8px 15px;
+  margin-top: 12px;
+  font-size: 12px;
+  text-transform: uppercase;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  height: 90%;
+}

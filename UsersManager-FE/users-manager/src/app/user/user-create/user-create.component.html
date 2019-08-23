@@ -1,0 +1,101 @@
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-card fxFlex="500px" fxFlex.xs="100%">
+    <mat-card-title>Create a new user</mat-card-title>
+    <form [formGroup]="userForm" autocomplete="off" novalidate (ngSubmit)="createUser(userForm.value)" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <mat-card-content>
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="User's name" formControlName="firstname" id="firstname">
+          <mat-hint align="end">Not more then 60 characters long.</mat-hint>
+          <mat-error *ngIf="hasError('firstname', 'required')">Name is required</mat-error>
+          <mat-error *ngIf="hasError('firstname', 'maxlength')">You have more than 60 characters</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="User's surname" formControlName="lastname" id="lastname">
+          <mat-hint align="end">Not more then 60 characters long.</mat-hint>
+          <mat-error *ngIf="hasError('lastname', 'required')">Surname is required</mat-error>
+          <mat-error *ngIf="hasError('lastname', 'maxlength')">You have more than 60 characters</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Choose a date of birth" formControlName="birthdate" id="birthdate" readonly (click)="picker.open()">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="User's email" formControlName="email" id="email">
+          <mat-hint align="end">Not more then 100 characters long.</mat-hint>
+          <mat-error *ngIf="hasError('email', 'required')">Email is required</mat-error>
+          <mat-error *ngIf="hasError('email', 'email')">Email doesn't fit into email regex pattern</mat-error>
+          <mat-error *ngIf="hasError('email', 'minlength')">You have less than 8 characters</mat-error>
+          <mat-error *ngIf="hasError('email', 'maxlength')">You have more than 60 characters</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="User's address" formControlName="address" id="address">
+          <mat-hint align="end">Not more then 60 characters long.</mat-hint>
+          <mat-error *ngIf="hasError('address', 'required')">Adress is required</mat-error>
+          <mat-error *ngIf="hasError('address', 'maxlength')">You have more than 60 characters</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="User's phonenumber" formControlName="phone" id="phone">
+          <mat-hint align="end">Not more then 60 characters long.</mat-hint>
+          <mat-error *ngIf="hasError('phone', 'required')">Phonenumber is required</mat-error>
+          <mat-error *ngIf="hasError('phone', 'minlength')">You have less than 8 characters</mat-error>
+          <mat-error *ngIf="hasError('phone', 'maxlength')">You have more than 60 characters</mat-error>
+        </mat-form-field>
+
+        <!--Add photo upload here-->
+        <div class="mat-card-content">
+          <mat-divider></mat-divider>
+          <app-file-create-upload formControlName="image" [progress]="progress"></app-file-create-upload>
+          <div style="display: block">
+            <mat-error *ngIf="hasError('image', 'required')">This field is required</mat-error>
+            <mat-error *ngIf="hasError('image', 'requiredFileType')">Only PNG 🤡</mat-error>
+          </div>
+        </div>
+
+        <div class="mat-card-content">
+          <mat-divider></mat-divider>
+          <div style="padding-top: 12px">
+            <mat-label class="form-label"><strong>Description:</strong></mat-label>
+          </div>
+          <textarea class="form-text" id="description" formControlName="description" #description></textarea>
+          <small class="text-muted"><code>{{description.value.length}}</code> of <code>{{maxUserDescriptionFieldsLength}}</code> characters</small>
+          <div style="display: block">
+            <mat-error *ngIf="hasError('description', 'maxlength')">Too long description</mat-error>
+          </div>
+        </div>
+
+        <div class="mat-card-content">
+          <mat-label class="form-label"><strong>Skills:</strong></mat-label>
+          <textarea class="form-text" id="skills" formControlName="skills" #skills></textarea>
+          <small class="text-muted"><code>{{skills.value.length}}</code> of <code>{{maxUserDescriptionFieldsLength}}</code> characters</small>
+          <div style="display: block">
+            <mat-error *ngIf="hasError('skills', 'maxlength')">Too long skill list</mat-error>
+          </div>
+        </div>
+
+        <div class="mat-card-content">
+          <mat-label class="form-label"><strong>Experience:</strong></mat-label>
+          <textarea class="form-text" id="experience" formControlName="experience" #experience></textarea>
+          <small class="text-muted"><code>{{experience.value.length}}</code> of <code>{{maxUserDescriptionFieldsLength}}</code> characters</small>
+          <div style="display: block">
+            <mat-error *ngIf="hasError('experience', 'maxlength')">Too long experience list</mat-error>
+          </div>
+        </div>
+
+      </mat-card-content>
+
+      <mat-card-actions>
+        <mat-card-actions align="center">
+          <button mat-raised-button color="primary" [disabled]="!userForm.valid">Create</button>
+          <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+        </mat-card-actions>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</section>

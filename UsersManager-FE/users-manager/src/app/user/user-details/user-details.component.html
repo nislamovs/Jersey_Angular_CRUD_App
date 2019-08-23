@@ -1,0 +1,9 @@
+<mat-card-actions>
+  <mat-card-actions align="center">
+    <button type="button" mat-raised-button color="primary" (click)="prevUser()"><< Prev</button>
+    <button type="button" mat-raised-button color="warn" (click)="nextUser()">Next >></button>
+  </mat-card-actions>
+</mat-card-actions>
+
+<app-user-data [user]="user" (selectEmitt)='showDescription = $event'></app-user-data>
+<app-description-data [user]="user" *ngIf='showDescription'></app-description-data>
