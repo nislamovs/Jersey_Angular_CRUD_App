@@ -78,7 +78,7 @@ Autopopulate birthdates                                                         
 -----------------------------------   BUGS:   ------------------------------------------
 
 User creation - fix progress bar                                                        --
-Fix birthdate bug on update                                                             --
+Fix birthdate bug on update                                                             OK
 Fix couple of photos - incorrect size                                                   OK
 Make possible to run from console (fix standalone launch)                               OK
 Redirect from http to https                                                             -- (probably Jetty bug)

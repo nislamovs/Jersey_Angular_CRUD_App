@@ -1,18 +1,18 @@
-import { RepositoryService } from './../../shared/repository.service';
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {DatePipe, Location} from '@angular/common';
-import { UserRequest } from '../../_interface/userRequest.model';
+import {RepositoryService} from './../../shared/repository.service';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Location} from '@angular/common';
+import {UserRequest} from '../../_interface/userRequest.model';
 import {DateAdapter, MAT_DATE_FORMATS, MatDialog} from '@angular/material';
 import {SuccessDialogComponent} from "../../shared/dialogs/success-dialog/success-dialog.component";
 import {ErrorHandlerService} from "../../shared/error-handler.service";
 import {requiredFileType} from "../../shared/util/customValidator";
 import {UserDetailsResponse} from "../../_interface/userDetailsResponse.model";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {APP_DATE_FORMATS, AppDateAdapter} from "./format-datepicker";
 
 @Component({
-  selector: 'app-user-create',
+  selector: 'app-user-update',
   templateUrl: './user-update.component.html',
   styleUrls: ['./user-update.component.css'],
   providers: [
@@ -25,7 +25,7 @@ export class UserUpdateComponent implements OnInit {
 
   public userForm: FormGroup;
   private dialogConfig;
-  maxUserDescriptionFieldsLength = 500;
+  maxUserDescriptionFieldsLength = 1500;
   public user: UserDetailsResponse;
 
   constructor(private location: Location, private repository: RepositoryService, private activeRoute: ActivatedRoute,
@@ -61,11 +61,7 @@ export class UserUpdateComponent implements OnInit {
 
   public hasError = (controlName: string, errorName: string) =>{
     const control = this.userForm.get(controlName);
-    // if(controlName==='firstname' && errorName=='required') {
-    //   console.log(">>>   " + controlName + " >>>   dirty:" + control.dirty + ",  hasError: " + control.hasError(errorName));
-    // }
     return control.dirty && control.hasError(errorName);
-    // return control.hasError(errorName);
   };
 
   public onCancel = () => {
@@ -85,15 +81,20 @@ export class UserUpdateComponent implements OnInit {
     this.repository.getData(apiUrl)
       .subscribe(res => {
           this.user = res as UserDetailsResponse;
+          // console.log("getting data 1: >>>   "+this.user.birthdate);
+          // console.log("getting data date: >>>   "+new String(this.user.birthdate).split('-')[0]);
+          // console.log("getting data month: >>>   "+new String(this.user.birthdate).split('-')[1]);
+          // console.log("getting data year: >>>   "+new String(this.user.birthdate).split('-')[2]);
+
           this.userForm.controls['id'].patchValue(this.user.id);
           this.userForm.controls['firstname'].patchValue(this.user.firstname);
           this.userForm.controls['lastname'].patchValue(this.user.lastname);
 
           this.userForm.controls['birthdate'].patchValue(
             new Date(
-              new Date(this.user.birthdate).getFullYear(),
-              new Date(this.user.birthdate).getMonth(),
-              new Date(this.user.birthdate).getDay()
+              +(new String(this.user.birthdate).split('-')[2]),
+              +(new String(this.user.birthdate).split('-')[1])-1,
+              +(new String(this.user.birthdate).split('-')[0])
             )
           );
 
