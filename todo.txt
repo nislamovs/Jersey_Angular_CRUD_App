@@ -37,25 +37,21 @@ Add .idea to gitignore                                                          
 Check alignment in README                                                               OK
 
 Fix problems with tasks in gradle ()                                                    --
+Gradle modules for FE and BE                                                            --
 Create Docker image for FE                                                              --
 Create docker compose script                                                            --
 
+vulnerabilities badge (FE)                                                              --
 
-Write frontend using Angular 7                                                          --
-Prettify FE menu's                                                                      --
-
+Write frontend using Angular 7                                                          OK
+Prettify FE menu's                                                                      OK
 create page (navbar)                                                                    ok
 create add user func/page                                                               ok
 create validation                                                                       ok
 create userlist/pagination                                                              ok
 create filters                                                                          ok
 
-Gradle modules for FE and BE                                                            --
-vulnerabilities badge                                                                   --
-
-Review Angular directory structure                                                      --
-Angular CORS issue                                                                      --
-
+Review Angular directory structure                                                      OK
 Rename account data to user additional data (text message, few more data())             OK
     - add possibility to add this during user creation                                  OK
         (text area with symbol decrease count)
@@ -78,6 +74,7 @@ Autopopulate birthdates                                                         
 -----------------------------------   BUGS:   ------------------------------------------
 
 User creation - fix progress bar                                                        --
+Angular CORS issue                                                                      --
 Fix birthdate bug on update                                                             OK
 Fix couple of photos - incorrect size                                                   OK
 Make possible to run from console (fix standalone launch)                               OK

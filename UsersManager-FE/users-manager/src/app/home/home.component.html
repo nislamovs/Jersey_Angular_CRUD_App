@@ -1,19 +1,37 @@
 <section fxLayout="column" fxFlexAlign="stretch">
   <div fxFlexAlign="center">
-    <p>Welcome to the Material Angular User Account Application</p>
+    <p>Welcome to the User management application</p>
   </div>
 
-  <p>In this application we are going to work with:</p>
+  <p>Check the tabs:</p>
 
   <mat-tab-group (selectedTabChange)="executeSelectedChange($event)">
-    <mat-tab label="Material Components">
-      <p>We are going to use different material components to create nice looking angular app.</p>
+    <mat-tab label="Used tech">
+      <div fxFlexAlign="start">
+        <p style="alignment: left">During creating this app I used:</p>
+      </div>
+      <div fxFlexAlign="start">
+        <ul>
+          <li>Angular 7 + Material components</li>
+          <li>Spring Boot 2</li>
+          <li>Jersey</li>
+          <li>Jetty</li>
+          <li>Docker</li>
+          <li>Logback</li>
+          <li>Gradle</li>
+          <li>Swagger</li>
+          <li>Certificates</li>
+          <li>H2 db with bunch of sample users</li>
+        </ul>
+      </div>
     </mat-tab>
-    <mat-tab label="Consume .NET Core Web API">
-      <p>We will consume our .NET Core application. Basically, we will create complete CRUD client app.</p>
+    <mat-tab label="Used data">
+      <div fxFlexAlign="start">
+        <p>The data You see in DB was taken from sanctions list and photos were taken from interpol database.</p>
+      </div>
     </mat-tab>
-    <mat-tab label="Fully responsive navigation menu">
-      <p>By using material components, we are going to create fully responsive navigation menu, with its side-bar as well.</p>
+    <mat-tab label="About">
+      <img [src]="'assets/khajiit.png'">
     </mat-tab>
   </mat-tab-group>
 </section>
