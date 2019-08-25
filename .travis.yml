@@ -12,4 +12,5 @@ before_script:
 - npm install -g @angular/cli
 
 script:
+- cd UsersManager-FE/users-manager
 - ng build
