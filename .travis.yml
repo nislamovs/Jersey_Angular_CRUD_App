@@ -9,9 +9,9 @@ branches:
   - master
 
 before_script:
+- cd UsersManager-FE/users-manager
 - npm install -g @angular/cli
 - npm install -g @angular-devkit/build-angular
 
 script:
-- cd UsersManager-FE/users-manager
 - ng build
