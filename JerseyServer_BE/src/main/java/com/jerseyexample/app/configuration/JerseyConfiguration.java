@@ -68,7 +68,7 @@ public class JerseyConfiguration extends ResourceConfig {
         swaggerConfig.setScan(true);
 
         SwaggerConfigLocator.getInstance().putConfig(SwaggerContextService.CONFIG_ID_DEFAULT, swaggerConfig);
-        // https://localhost:8080/api/swagger.json
+        // https://localhost:8081/api/swagger.json
     }
 
  }

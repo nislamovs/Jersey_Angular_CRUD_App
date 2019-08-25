@@ -9,7 +9,7 @@ chmod a+x ./* ;
 ./import_image.sh ;
 ./run.sh ;
 
-echo "Checking service availability : [https://localhost:8080/actuator/health] ... "
+echo "Checking service availability : [https://localhost:8081/actuator/health] ... "
 sleep 10 ;
 
-curl -kvvv https://localhost:8080/actuator/health 2>/dev/null ;
+curl -kvvv https://localhost:8081/actuator/health 2>/dev/null ;

@@ -25,9 +25,9 @@ Status : development
 
 - Run it with `java -jar jerseyexample-1.0.0.jar`.
 
-- The service will launch on `8080` port. Endpoints will be accessible from `https://localhost:8080/api/`.
+- The service will launch on `8081` port. Endpoints will be accessible from `https://localhost:8081/api/`.
 
-- Spring actuator endpoints will be available from `https://localhost:8080/actuator`.
+- Spring actuator endpoints will be available from `https://localhost:8081/actuator`.
 
 - H2 in-memory storage is available from `https://localhost:8080/dbconsole`.
 
@@ -41,9 +41,9 @@ Status : development
 
 **API Docs:**
 
-- Swagger ui will be accessible from `https://localhost:8080/swagger-ui.html`.
+- Swagger ui will be accessible from `https://localhost:8081/swagger-ui.html`.
 
-- Swagger json will be accessible from `https://localhost:8080/api/swagger.json`.
+- Swagger json will be accessible from `https://localhost:8081/api/swagger.json`.
 
 - If You need API docs in pdf/html format, run: ```gradle clean asciidoctor```. Then go to ```Jersey_Angular_CRUD_App/JerseyServer_BE/build/asciidoc```, where You will find documentation in both formats.
 

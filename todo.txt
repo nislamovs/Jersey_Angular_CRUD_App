@@ -40,9 +40,9 @@ Fix problems with tasks in gradle ()                                            
 Gradle modules for FE and BE                                                            --
 Create Docker image for FE                                                              --
 Create docker compose script                                                            --
+Create additional scripts for API                                                       OK
 
-vulnerabilities badge (FE)                                                              --
-
+vulnerabilities badge (FE)                                                              OK
 Write frontend using Angular 7                                                          OK
 Prettify FE menu's                                                                      OK
 create page (navbar)                                                                    ok
