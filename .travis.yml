@@ -10,6 +10,7 @@ branches:
 
 before_script:
 - npm install -g @angular/cli
+- npm install -g @angular-devkit/build-angular
 
 script:
 - cd UsersManager-FE/users-manager
