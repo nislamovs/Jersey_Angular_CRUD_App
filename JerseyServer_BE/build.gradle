@@ -93,6 +93,10 @@ test {
     }
 }
 
+coveralls {
+    jacocoReportPath "${buildDir}/reports/coverage/xml/coverage.xml"
+}
+
 convertSwagger2markup {
     dependsOn test
     swaggerInput "${swaggerOutputDir}/swagger.json"
