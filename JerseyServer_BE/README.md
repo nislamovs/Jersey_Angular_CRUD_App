@@ -2,6 +2,7 @@
 Small CRUD App based on Jersey and Springboot 2
 
 [![Build Status](https://travis-ci.org/nislamovs/Jersey_Angular_CRUD_App.svg?branch=master)](https://travis-ci.org/nislamovs/Jersey_Angular_CRUD_App)
+[![Coverage Status](https://coveralls.io/repos/github/nislamovs/Jersey_Angular_CRUD_App/badge.svg?branch=master)](https://coveralls.io/github/nislamovs/Jersey_Angular_CRUD_App?branch=master)
 
 #### Stack:
 

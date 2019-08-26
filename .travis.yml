@@ -26,8 +26,6 @@ matrix:
       sudo: false # faster builds
 
       before_script:
-      - echo "ADSDADAD"
-      - echo `pwd`
       - cd JerseyServer_BE
       - chmod +x gradlew
 

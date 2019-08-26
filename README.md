@@ -1,6 +1,10 @@
 # Jersey_Angular_CRUD_App
 Small CRUD App based on Jersey and Angular 7.
 
+[![Build Status](https://travis-ci.org/nislamovs/Jersey_Angular_CRUD_App.svg?branch=master)](https://travis-ci.org/nislamovs/Jersey_Angular_CRUD_App)
+[![Coverage Status](https://coveralls.io/repos/github/nislamovs/Jersey_Angular_CRUD_App/badge.svg?branch=master)](https://coveralls.io/github/nislamovs/Jersey_Angular_CRUD_App?branch=master)
+[![Known Vulnerabilities](https://snyk.io//test/github/nislamovs/Jersey_Angular_CRUD_App/badge.svg?targetFile=UsersManager-FE/users-manager/package.json)](https://snyk.io//test/github/nislamovs/Jersey_Angular_CRUD_App?targetFile=UsersManager-FE/users-manager/package.json)
+
 Status : development
 
 #### Stack:

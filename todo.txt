@@ -23,11 +23,10 @@ Make possible to generate swagger documentation (PDF)                           
 
 Integration tests                                                                       --
 Unit tests                                                                              --
-Unit tests logging                                                                      --
 Test coverage                                                                           --
-
 Test coverage - show in readme.md (codecov badge)                                       --
-Build badge - show in readme.md                                                         --
+Unit tests logging                                                                      OK
+Build badge - show in readme.md                                                         OK
 
 Check necessity for response messages after successful operation                        OK
 Create bash scripts for testing API functionality                                       OK
