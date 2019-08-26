@@ -33,4 +33,4 @@ matrix:
       - ./gradlew clean build
 
       after_success:
-      - ./gradlew coveralls
+      - ./gradlew test jacocoTestReport coveralls
