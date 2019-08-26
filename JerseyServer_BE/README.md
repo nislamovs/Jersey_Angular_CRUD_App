@@ -1,6 +1,8 @@
 # User-Manager (Backend)
 Small CRUD App based on Jersey and Springboot 2
 
+[![Build Status](https://travis-ci.org/nislamovs/Jersey_Angular_CRUD_App.svg?branch=master)](https://travis-ci.org/nislamovs/Jersey_Angular_CRUD_App)
+
 #### Stack:
 
     Embedded Jetty with https 

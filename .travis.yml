@@ -20,11 +20,13 @@ matrix:
       - ng build
 
     - language: java
-      sudo: false # faster builds
       jdk:
       - openjdk8
 
+      sudo: false # faster builds
+
       before_script:
+      - echo "ADSDADAD"
       - pwd
       - cd ../JerseyServer_BE
       - chmod +x gradlew
