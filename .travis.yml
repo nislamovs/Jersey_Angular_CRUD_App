@@ -1,18 +1,28 @@
-language: node_js
-node_js:
-  - "10.15.1"
-dist: trusty
-sudo: required
+matrix:
+  include:
+    - language: node_js
+      node_js:
+        - "10.15.1"
+      dist: trusty
+      sudo: required
 
-branches:
-  only:
-  - master
+#    branches:
+#      only:
+#      - master
 
-before_script:
-- cd UsersManager-FE/users-manager
-- npm install -g @angular/cli
-- npm install -g @angular-devkit/build-angular
-- npm install
+      before_script:
+      - cd UsersManager-FE/users-manager
+      - npm install -g @angular/cli
+      - npm install -g @angular-devkit/build-angular
+      - npm install
 
-script:
-- ng build
+      script:
+      - ng build
+
+    - language: java
+      sudo: false # faster builds
+      jdk:
+      - openjdk8
+
+      before_script:
+      - chmod +x gradlew

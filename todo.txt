@@ -25,7 +25,9 @@ Integration tests                                                               
 Unit tests                                                                              --
 Unit tests logging                                                                      --
 Test coverage                                                                           --
+
 Test coverage - show in readme.md (codecov badge)                                       --
+Build badge - show in readme.md                                                         --
 
 Check necessity for response messages after successful operation                        OK
 Create bash scripts for testing API functionality                                       OK
