@@ -27,8 +27,8 @@ matrix:
 
       before_script:
       - echo "ADSDADAD"
-      - pwd
-      - cd ../JerseyServer_BE
+      - echo `pwd`
+      - cd JerseyServer_BE
       - chmod +x gradlew
 
       script:
