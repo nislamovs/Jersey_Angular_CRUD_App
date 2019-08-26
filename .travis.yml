@@ -25,4 +25,5 @@ matrix:
       - openjdk8
 
       before_script:
+      - cd JerseyServer_BE
       - chmod +x gradlew
