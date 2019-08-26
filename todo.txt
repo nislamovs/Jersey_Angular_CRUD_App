@@ -36,12 +36,10 @@ Spring actuator - setup endpoints                                               
 Add .idea to gitignore                                                                  OK
 Check alignment in README                                                               OK
 
-Fix problems with tasks in gradle ()                                                    --
-Gradle modules for FE and BE                                                            --
 Create Docker image for FE                                                              --
 Create docker compose script                                                            --
-Create additional scripts for API                                                       OK
 
+Create additional scripts for API                                                       OK
 vulnerabilities badge (FE)                                                              OK
 Write frontend using Angular 7                                                          OK
 Prettify FE menu's                                                                      OK
@@ -76,6 +74,7 @@ Autopopulate birthdates                                                         
 User creation - fix progress bar                                                        --
 Angular CORS issue                                                                      --
 Fix birthdate bug on update                                                             OK
+Fix problems with tasks in gradle ()                                                    OK
 Fix couple of photos - incorrect size                                                   OK
 Make possible to run from console (fix standalone launch)                               OK
 Redirect from http to https                                                             -- (probably Jetty bug)
