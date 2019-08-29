@@ -5,6 +5,7 @@ import com.jerseyexample.app.converters.UserConverter;
 import com.jerseyexample.app.converters.UserDetailsConverter;
 import com.jerseyexample.app.domain.requests.CreateUserForm;
 import com.jerseyexample.app.domain.requests.UserRequest;
+import com.jerseyexample.app.domain.responses.UserCreatedResponse;
 import com.jerseyexample.app.model.UserEntity;
 import com.jerseyexample.app.services.UserService;
 import io.swagger.annotations.Api;
@@ -25,8 +26,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URISyntaxException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
@@ -42,8 +43,8 @@ public class UserResource implements UserResourceDocs {
 
     @GET
     @Path("/users/all")
-    @Produces("application/json")
-    public Response getAllUsers() throws URISyntaxException {
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllUsers() {
 
         log.info("Retrieving user list...");
         return Response.status(Response.Status.OK)
@@ -52,8 +53,8 @@ public class UserResource implements UserResourceDocs {
 
     @GET
     @Path("/users/count")
-    @Produces("application/json")
-    public Response getUsersCount() throws URISyntaxException {
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getUsersCount() {
 
         HashMap<String, Long> response = new HashMap<>();
         response.put("usersCount", userService.getUsersCount());
@@ -64,11 +65,11 @@ public class UserResource implements UserResourceDocs {
 
     @GET
     @Path("/users")
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getPageOfUsers(@DefaultValue("5")   @QueryParam("PageSize") Integer pageSize,
                                    @DefaultValue("1")   @QueryParam("PageNumber") Integer pageNumber,
                                    @DefaultValue("asc") @QueryParam("OrderDirection") String orderDirection,
-                                   @DefaultValue("id")  @QueryParam("OrderBy") String orderBy) throws URISyntaxException {
+                                   @DefaultValue("id")  @QueryParam("OrderBy") String orderBy) {
 
         log.info("Retrieving user page [ pageSize : pageNumber : orderBy : orderDirection == " + pageSize + " : " + pageNumber + " : " + orderBy + " : " + orderDirection + " ]");
         Page<UserEntity> users = userService.findAllUsers(pageSize, pageNumber, orderDirection, orderBy);
@@ -82,13 +83,12 @@ public class UserResource implements UserResourceDocs {
 
     @GET
     @Path("/users/{id}")
-    @Produces("application/json")
-    public Response getUserById(@PathParam("id") @Min(value = 0, message = "Request params are invalid.") long id) throws URISyntaxException {
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getUserById(@PathParam("id") @Min(value = 0, message = "Request params are invalid.") long id) {
 
         log.info("Retrieving user by id: [" + id + "]");
 
         System.out.println(UserDetailsConverter.toResponse(userService.findById(id)));
-
 
         return Response.status(Response.Status.OK).entity(UserDetailsConverter.toResponse(userService.findById(id))).build();
     }
@@ -102,12 +102,15 @@ public class UserResource implements UserResourceDocs {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         UserRequest user = UserRequest.builder().firstname(userForm.getFirstname()).lastname(userForm.getLastname())
-                .address(userForm.getAddress()).email(userForm.getEmail()).phone(userForm.getPhone()).birthdate(LocalDate.parse(userForm.getBirthdate(), formatter).atStartOfDay())
+                .address(userForm.getAddress())
+                .email(userForm.getEmail())
+                .phone(userForm.getPhone())
+                .birthdate(LocalDate.parse(userForm.getBirthdate(), formatter).atStartOfDay())
                 .photoImage(IOUtils.toByteArray(userForm.getUserPhotoStream()))
                 .description(userForm.getDescription()).skills(userForm.getSkills()).experience(userForm.getExperience())
                 .build();
-
-        userService.saveUser(user);
+        System.out.println("####################################    "+user.toString());
+        userService.createUser(user);
 
         return Response.status(Response.Status.CREATED).build();
     }
@@ -115,7 +118,7 @@ public class UserResource implements UserResourceDocs {
     @PUT
     @Path("/users")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response updateUserByForm(
             @FormDataParam("id") String id,
             @FormDataParam("firstname") String firstname,
@@ -146,16 +149,16 @@ public class UserResource implements UserResourceDocs {
                 .description(description).skills(skills).experience(experience)
                 .build();
 
-        userService.saveUser(user);
+        userService.createUser(user);
 
         return Response.status(Response.Status.OK).build();
     }
 
     @DELETE
     @Path("/users/{id}")
-    @Consumes("application/json")
-    @Produces("application/json")
-    public Response deleteUserById(@PathParam("id") @Min(value = 1, message = "Request params are invalid.") long id) throws URISyntaxException {
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteUserById(@PathParam("id") @Min(value = 1, message = "Request params are invalid.") long id) {
 
         log.info("Deleting user by id: [" + id + "]");
         userService.deleteUser(id);
@@ -167,20 +170,24 @@ public class UserResource implements UserResourceDocs {
 
     @POST
     @Path("/v2/users")
-    @Consumes("application/json")
-    public Response createUser(@Valid UserRequest userRequest) throws URISyntaxException {
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response createUser(@Valid UserRequest userRequest) {
 
-        log.info("Creating new user : [" + userRequest.getFirstname() + " " + userRequest.getLastname() + "]");
-        userService.saveUser(userRequest);
+        log.info("Creating new user : [" + userRequest.getFirstname() + " " + userRequest.getLastname() + " " + userRequest.getBirthdate() + "]");
 
-        return Response.status(Response.Status.CREATED).build();
+        UserEntity ue = userService.createUser(userRequest);
+        UserCreatedResponse response = UserCreatedResponse.builder().firstname(ue.getFirstname()).lastname(ue.getLastname())
+                .email(ue.getEmail()).createdDate(LocalDateTime.now()).build();
+
+        return Response.status(Response.Status.CREATED).entity(response).build();
     }
 
     @PUT
     @Path("/v2/users")
-    @Consumes("application/json")
-    @Produces("application/json")
-    public Response updateUser(@Valid UserRequest userReq) throws URISyntaxException {
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateUser(@Valid UserRequest userReq) {
 
         log.info("Updating user by id: [" + userReq.getId() + "]");
         userService.updateUser(userReq);

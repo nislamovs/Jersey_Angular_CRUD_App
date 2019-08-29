@@ -39,7 +39,7 @@ public class UserResponse {
     @ApiModelProperty(required = true, value = "User phone", example = "3456783489")
     private String phone;
 
-    @ApiModelProperty(required = true, value = "User birthdate", example = "12.04.1966")
+    @ApiModelProperty(required = true, value = "User birthdate", example = "1966-02-11")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private LocalDateTime birthdate;
 

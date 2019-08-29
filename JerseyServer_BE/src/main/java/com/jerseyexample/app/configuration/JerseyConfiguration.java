@@ -10,6 +10,7 @@ import io.swagger.jaxrs.listing.SwaggerSerializers;
 import org.glassfish.jersey.logging.LoggingFeature;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
+import org.glassfish.jersey.server.ServerProperties;
 import org.glassfish.jersey.server.spring.scope.RequestContextFilter;
 import org.glassfish.jersey.server.wadl.internal.WadlResource;
 import org.glassfish.jersey.servlet.ServletProperties;
@@ -18,6 +19,8 @@ import org.springframework.stereotype.Component;
 import javax.ws.rs.ApplicationPath;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static org.glassfish.jersey.server.ServerProperties.BV_FEATURE_DISABLE;
 
 @Component
 @ApplicationPath("/api")
@@ -40,18 +43,22 @@ public class JerseyConfiguration extends ResourceConfig {
 
         property(ServletProperties.FILTER_FORWARD_ON_404, true);
 
-        register(JERSEY_LOGGER);
 
+        register(CorsConfiguration.class);
         register(UserResource.class);
         register(TestingResource.class);
 
+        register(ExceptionHandler.class);
+
         // Access through /<Jersey's servlet path>/application.wadl
         register(WadlResource.class);
+
+        register(JERSEY_LOGGER);
     }
 
     private void configureSwagger() {
-        this.register(ApiListingResource.class);
-        this.register(SwaggerSerializers.class);
+        register(ApiListingResource.class);
+        register(SwaggerSerializers.class);
 
         BeanConfig swaggerConfig = new BeanConfig();
         swaggerConfig.setConfigId("spring-boot-jaxrs-swagger");

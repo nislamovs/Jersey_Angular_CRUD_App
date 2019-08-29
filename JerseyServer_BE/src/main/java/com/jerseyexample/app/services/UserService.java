@@ -16,7 +16,7 @@ public interface UserService {
 
     UserEntity findByName(String name) throws UserNotFoundException;
 
-    void saveUser(UserRequest user) throws ImageConversionException;
+    UserEntity createUser(UserRequest user) throws ImageConversionException;
 
     void updateUser(UserRequest user) throws UserNotFoundException;
 

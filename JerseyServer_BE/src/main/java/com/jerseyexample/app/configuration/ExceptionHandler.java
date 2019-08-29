@@ -19,7 +19,6 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import org.springframework.stereotype.Component;
 
-@Component
 @Provider
 @Slf4j
 public class ExceptionHandler implements ExceptionMapper<Throwable> {

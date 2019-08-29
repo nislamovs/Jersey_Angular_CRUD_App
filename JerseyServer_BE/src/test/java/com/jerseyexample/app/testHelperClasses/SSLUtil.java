@@ -1,4 +1,4 @@
-package com.jerseyexample.app.util;
+package com.jerseyexample.app.testHelperClasses;
 
 import javax.net.ssl.*;
 import java.security.*;

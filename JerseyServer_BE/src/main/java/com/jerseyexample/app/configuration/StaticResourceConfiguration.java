@@ -7,7 +7,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import javax.ws.rs.ext.Provider;
 
 @Configuration
-@Provider
 public class StaticResourceConfiguration extends WebMvcConfigurerAdapter {
 
     @Override

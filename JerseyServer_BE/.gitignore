@@ -40,3 +40,4 @@ lib/
 **/stuff/
 ./package-lock.json
 **/out/
+**/build/

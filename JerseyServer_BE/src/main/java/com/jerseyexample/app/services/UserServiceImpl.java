@@ -20,11 +20,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.imageio.ImageIO;
+import javax.inject.Inject;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,12 +36,8 @@ import java.util.Optional;
 @Transactional
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
-
-    @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    @Inject
+    private UserRepository userRepository;
 
     @Override
     public UserEntity findById(Long id) throws UserNotFoundException {
@@ -57,32 +56,33 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void saveUser(UserRequest userRequest) {
+    public UserEntity createUser(UserRequest userRequest) throws ImageConversionException {
+
         UserEntity user = UserConverter.toEntity(userRequest);
-        byte[] image;
-        if (Base64.isBase64(userRequest.getPhotoImage())) {
-             image = Base64.decodeBase64(userRequest.getPhotoImage());
-        } else {
-            image = userRequest.getPhotoImage();
+        try {
+            byte[] image = Base64.isBase64(userRequest.getPhotoImage())
+                    ? Base64.decodeBase64(userRequest.getPhotoImage())
+                    : userRequest.getPhotoImage();
+
+            user.setUserPhoto(UserPhotoEntity.builder().photoImage(image).photoIcon(scale(image, 32, 32))
+                    .id(userRequest.getId()).build());
+        } catch (Exception ex) {
+            throw new ImageConversionException("Error converting image.", ex);
         }
-
-        user.setUserPhoto(UserPhotoEntity.builder().photoImage(image)
-                                                    .photoIcon(scale(image, 32, 32))
-                                                    .id(userRequest.getId())
-                                                    .build());
-
         user.setUserDescription(UserDescriptionEntity.builder().description(userRequest.getDescription())
                 .skills(userRequest.getSkills()).experience(userRequest.getExperience())
                 .id(userRequest.getId())
                 .build());
 
+        //TODO: For some reason repository doesn't return entity after save
         userRepository.save(user);
+        return user;
     }
 
     @Override
     public void updateUser(UserRequest user) throws UserNotFoundException {
         if (isUserExist(user)) {
-            saveUser(user);
+            createUser(user);
         } else {
             throw new UserNotFoundException("Username with id [" + user.getId() + "] not found.");
         }

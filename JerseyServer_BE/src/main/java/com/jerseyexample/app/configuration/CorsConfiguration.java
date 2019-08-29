@@ -1,37 +1,11 @@
 package com.jerseyexample.app.configuration;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerResponseContext;
 import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 
-//@Configuration
-//@Provider
-//public class CorsConfiguration {// extends WebMvcConfigurerAdapter {
-//
-//    @Bean
-//    public WebMvcConfigurer corsConfigurer() {
-//        return new WebMvcConfigurerAdapter() {
-//            @Override
-//            public void addCorsMappings(CorsRegistry registry) {
-//                registry.addMapping("/**")
-//                        .allowedOrigins("*")
-//                        .allowCredentials(true)
-//                        .maxAge(3600)
-//                        .exposedHeaders("X-Requested-With, Content-Type, Authorization, Origin, Accept, Access-Control-Request-Method, Access-Control-Request-Headers")
-//                        .allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH", "OPTIONS");
-//            }
-//        };
-//    }
-//
-//
-//}
-
-@Configuration
 @Provider
 public class CorsConfiguration implements ContainerResponseFilter {
 

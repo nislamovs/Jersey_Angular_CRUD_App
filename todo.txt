@@ -16,15 +16,20 @@ Audit log table                                                                 
 Add revisions table                                                                     OK
 Create pagination while requesting/viewing data from db                                 OK
 Check multipart size in request                                                         OK
-swagger                                                                                 OK
-create api for user                                                                     OK
-add to README.MD info about swagger.json path                                           OK
+Swagger                                                                                 OK
+Create api for user                                                                     OK
+Add to README.MD info about swagger.json path                                           OK
 Make possible to generate swagger documentation (PDF)                                   OK
+Move swagger docs (ascii docs) generation tasks(gradle) into separate gradle file       --
+Add form validation for user create                                                     --
+Add form validation for user update                                                     --
 
 Integration tests                                                                       --
-Unit tests                                                                              --
-Test coverage                                                                           --
-Test coverage - show in readme.md (codecov badge)                                       --
+Unit tests                                                                              OK
+Separate Unit, IT, Swagger tasks                                                        --
+Make rest assured working with certificates                                             --
+Test coverage                                                                           OK
+Test coverage - show in readme.md (codecov badge)                                       OK
 Unit tests logging                                                                      OK
 Build badge - show in readme.md                                                         OK
 
@@ -38,6 +43,7 @@ Add .idea to gitignore                                                          
 Check alignment in README                                                               OK
 
 Create Docker image for FE                                                              --
+Create Docker image for BE                                                              --
 Create docker compose script                                                            --
 
 Create additional scripts for API                                                       OK
@@ -72,8 +78,10 @@ Autopopulate birthdates                                                         
 
 -----------------------------------   BUGS:   ------------------------------------------
 
+Form validation doesn't work                                                            --
+Make error handling for constraint validation                                           --
 User creation - fix progress bar                                                        --
-Angular CORS issue                                                                      --
+Fix Angular CORS issue                                                                  OK
 Fix birthdate bug on update                                                             OK
 Fix problems with tasks in gradle ()                                                    OK
 Fix couple of photos - incorrect size                                                   OK
