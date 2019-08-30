@@ -23,7 +23,7 @@ Status : development
  
 **Backend:**
 
-- Go to `JerseyServer_BE` directory and run command `gradle build`.
+- Go to `JerseyServer_BE` directory and run command `./gradlew clean build` or `gradle clean build`.
 
 - Then go to `Jersey_Angular_CRUD_App/JerseyServer_BE/build/` directory and find there file `jerseyexample-1.0.0.jar`.
 
@@ -49,7 +49,7 @@ Status : development
 
 - Swagger json will be accessible from `https://localhost:8081/api/swagger.json`.
 
-- If You need API docs in pdf/html format, run: ```gradle clean asciidoctor```. Then go to ```Jersey_Angular_CRUD_App/JerseyServer_BE/build/asciidoc```, where You will find documentation in both formats.
+- If You need API docs in pdf/html format, run: ```./gradlew clean swaggerDoc```. Then go to ```Jersey_Angular_CRUD_App/JerseyServer_BE/build/asciidoc```, where You will find documentation in both formats.
 
 **Docker:** 
 
