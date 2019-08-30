@@ -11,6 +11,9 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import javax.validation.constraints.*;
 import java.io.InputStream;
+import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 
 @Data
 @Builder
@@ -85,4 +88,13 @@ public class CreateUserForm {
     @Max(value = 500, message = "Experience length should be max 500 signs long.")
     @FormDataParam("experience")
     String experience;
+
+    public Map<String, Object> toMap() throws IllegalAccessException {
+        Map<String, Object> resultMap = new HashMap<>();
+
+        for (Field field : this.getClass().getDeclaredFields()) {
+            resultMap.put(field.getName(), field.get(this));
+        }
+        return resultMap;
+    }
 }

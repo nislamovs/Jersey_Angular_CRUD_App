@@ -31,6 +31,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
+import static javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED_TYPE;
+
 @Component
 @Resource
 @Slf4j
@@ -95,7 +97,8 @@ public class UserResource implements UserResourceDocs {
 
     @POST
     @Path("/users")
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Consumes({MediaType.MULTIPART_FORM_DATA, MediaType.APPLICATION_FORM_URLENCODED})
+//    @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createUserByForm (@BeanParam CreateUserForm userForm) throws IOException {
 
@@ -109,10 +112,12 @@ public class UserResource implements UserResourceDocs {
                 .photoImage(IOUtils.toByteArray(userForm.getUserPhotoStream()))
                 .description(userForm.getDescription()).skills(userForm.getSkills()).experience(userForm.getExperience())
                 .build();
-        System.out.println("####################################    "+user.toString());
-        userService.createUser(user);
 
-        return Response.status(Response.Status.CREATED).build();
+        UserEntity ue = userService.createUser(user);
+        UserCreatedResponse response = UserCreatedResponse.builder().firstname(ue.getFirstname()).lastname(ue.getLastname())
+                .email(ue.getEmail()).createdDate(LocalDateTime.now()).build();
+
+        return Response.status(Response.Status.CREATED).entity(response).build();
     }
 
     @PUT
@@ -149,9 +154,11 @@ public class UserResource implements UserResourceDocs {
                 .description(description).skills(skills).experience(experience)
                 .build();
 
-        userService.createUser(user);
+        UserEntity ue = userService.createUser(user);
+        UserCreatedResponse response = UserCreatedResponse.builder().firstname(ue.getFirstname()).lastname(ue.getLastname())
+                .email(ue.getEmail()).createdDate(LocalDateTime.now()).build();
 
-        return Response.status(Response.Status.OK).build();
+        return Response.status(Response.Status.OK).entity(response).build();
     }
 
     @DELETE

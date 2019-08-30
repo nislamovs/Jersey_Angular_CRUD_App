@@ -18,7 +18,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import javax.validation.ValidationException;
 import javax.ws.rs.core.Response;
-import java.io.IOException;
 import java.util.List;
 
 import static com.jerseyexample.app.testHelperClasses.UserTestDataFactory.makeUserList;
@@ -52,7 +51,7 @@ public class UserResourceTests {
 
     @Test
     @DisplayName("Creating new user")
-    public void shouldCreateNewUser() throws IOException {
+    public void shouldCreateNewUser() {
         UserRequest userRequest = newUserRequest();
         UserEntity userEntity = newUserEntity();
         when(userService.createUser(userRequest)).thenReturn(userEntity);
@@ -68,7 +67,7 @@ public class UserResourceTests {
 
     @Test(expected = ValidationException.class)
     @DisplayName("Creating new user with empty firstname")
-    public void shouldFailCreatingNewUser_FirstnameEmpty() throws IOException {
+    public void shouldFailCreatingNewUser_FirstnameEmpty() {
         UserRequest userRequest = newUserRequest();
         userRequest.setFirstname(null);
         when(userService.createUser(userRequest)).thenThrow(new ValidationException());

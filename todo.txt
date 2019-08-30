@@ -24,10 +24,10 @@ Move swagger docs (ascii docs) generation tasks(gradle) into separate gradle fil
 Add form validation for user create                                                     --
 Add form validation for user update                                                     --
 
-Integration tests                                                                       --
+Integration tests                                                                       OK
 Unit tests                                                                              OK
 Separate Unit, IT, Swagger tasks                                                        OK
-Make rest assured working with certificates                                             --
+Make rest assured working with certificates                                             OK
 Test coverage                                                                           OK
 Test coverage - show in readme.md (codecov badge)                                       OK
 Unit tests logging                                                                      OK
