@@ -20,7 +20,7 @@ Swagger                                                                         
 Create api for user                                                                     OK
 Add to README.MD info about swagger.json path                                           OK
 Make possible to generate swagger documentation (PDF)                                   OK
-Move swagger docs (ascii docs) generation tasks(gradle) into separate gradle file       --
+Move swagger docs (ascii docs) generation tasks(gradle) into separate gradle file       OK
 Add form validation for user create                                                     --
 Add form validation for user update                                                     --
 
