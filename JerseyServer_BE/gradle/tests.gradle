@@ -1,0 +1,21 @@
+ext {
+
+    test {
+        useJUnitPlatform()
+        if (!project.hasProperty('it')) {
+            //./gradlew clean test -P it
+            exclude 'com/jerseyexample/app/integrationTests/**'
+        }
+        exclude 'com/jerseyexample/app/swagger/**'
+
+        testLogging {
+            events 'PASSED', 'FAILED', 'SKIPPED'
+        }
+        finalizedBy(jacocoTestReport)
+    }
+
+    coveralls {
+        jacocoReportPath "${buildDir}/reports/coverage/xml/coverage.xml"
+    }
+}
+

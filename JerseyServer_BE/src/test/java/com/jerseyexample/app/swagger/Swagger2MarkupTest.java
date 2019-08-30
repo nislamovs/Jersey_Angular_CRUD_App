@@ -27,11 +27,10 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-//@RunWith(SpringRunner.class)
-//@SpringBootTest(classes = {JerseydemoApplication.class, SwaggerConfiguration.class, JerseyConfiguration.class},
-//        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-//@Tag("api-docs")
-//@Slf4j
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = {JerseydemoApplication.class, SwaggerConfiguration.class, JerseyConfiguration.class},
+        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Slf4j
 public class Swagger2MarkupTest {
 
     @Inject
@@ -46,7 +45,6 @@ public class Swagger2MarkupTest {
     }
 
     @Test
-    @Ignore
     public void downloadSwaggerJson() throws Exception {
         ResponseEntity<String> response = restTemplate.getForEntity(
                 new URL(getRootUrl()).toString(), String.class);

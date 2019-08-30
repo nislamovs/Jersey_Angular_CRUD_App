@@ -1,0 +1,39 @@
+ext {
+
+    apply plugin: 'com.palantir.docker'
+
+//    task unpack(type: Copy) {
+//        dependsOn bootJar
+//        from(zipTree(tasks.bootJar.outputs.files.singleFile))
+//        into("build/dependency")
+//    }
+//
+//    docker {
+//        name "${bootJar.baseName}"
+//        copySpec.from(tasks.unpack.outputs).into("dependency")
+//        buildArgs(['DEPENDENCY': "dependency"])
+//    }
+
+//task wrapper(type: Wrapper) {
+//    gradleVersion = '5.0'
+//}
+//task dockerBuild(dependsOn: ['install'])
+
+//docker {
+//    name "${bootJar.baseName}"
+//    tags "${version}"
+//    files jar.archivePath
+//    buildArgs([JAR_FILE: "${jar.archiveName}"])
+//    noCache true
+//}
+//
+//
+//dockerRun {
+//    name "${bootJar.baseName}-inst"
+//    image "${project.name}"
+//    ports '8081:8081'
+//    daemonize true
+//    clean true
+//}
+}
+

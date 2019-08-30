@@ -26,7 +26,7 @@ Add form validation for user update                                             
 
 Integration tests                                                                       --
 Unit tests                                                                              OK
-Separate Unit, IT, Swagger tasks                                                        --
+Separate Unit, IT, Swagger tasks                                                        OK
 Make rest assured working with certificates                                             --
 Test coverage                                                                           OK
 Test coverage - show in readme.md (codecov badge)                                       OK

@@ -33,13 +33,21 @@ Small CRUD App based on Jersey and Springboot 2
 
 - Backend could be launched from IDE as well. 
 
+**Tests:**
+
+- First go to `Jersey_Angular_CRUD_App/JerseyServer_BE` directory
+
+- Unit tests : ```./gradlew clean test```
+
+- Unit and integration tests : ```./gradlew clean test -Pit```
+
 **API Docs:**
 
 - Swagger ui will be accessible from `https://localhost:8081/swagger-ui.html`.
 
 - Swagger json will be accessible from `https://localhost:8081/api/swagger.json`.
 
-- If You need API docs in pdf/html format, run: ```./gradlew clean asciidoctor```. Then go to ```Jersey_Angular_CRUD_App/JerseyServer_BE/build/asciidoc```, where You will find documentation in both formats.
+- If You need API docs in pdf/html format, run: ```./gradlew clean swaggerDoc```. Then go to ```Jersey_Angular_CRUD_App/JerseyServer_BE/build/asciidoc```, where You will find documentation in both formats.
 
 **Docker:** 
 
