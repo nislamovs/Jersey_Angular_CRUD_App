@@ -1,22 +1,28 @@
 package com.jerseyexample.app.controller;
 
 import com.jerseyexample.app.domain.exceptions.UserNotFoundException;
+import com.jerseyexample.app.domain.requests.CreateUserForm;
+import com.jerseyexample.app.domain.requests.UserRequest;
+import com.jerseyexample.app.domain.responses.UserCreatedResponse;
 import com.jerseyexample.app.model.UserEntity;
 import com.jerseyexample.app.repository.UserRepository;
 import com.jerseyexample.app.services.UserService;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.IOException;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-@Component
 @Resource
 @Slf4j
 @Path("/")

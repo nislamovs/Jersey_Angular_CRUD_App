@@ -4,6 +4,7 @@ import static javax.ws.rs.core.Response.Status.*;
 import static javax.ws.rs.core.Response.status;
 import static org.apache.commons.lang3.exception.ExceptionUtils.getStackTrace;
 
+import javax.validation.ConstraintViolationException;
 import javax.validation.ValidationException;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
@@ -26,7 +27,9 @@ public class ExceptionHandler implements ExceptionMapper<Throwable> {
     @Override
     public Response toResponse(Throwable ex) {
         ex.printStackTrace();
+
         if (ex instanceof ValidationException
+                || ex instanceof ConstraintViolationException
                 || ex instanceof JsonParseException
                 || ex instanceof JsonMappingException
                 || ex instanceof ImageConversionException) {

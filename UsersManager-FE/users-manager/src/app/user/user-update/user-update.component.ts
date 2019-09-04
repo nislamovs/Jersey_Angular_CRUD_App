@@ -27,6 +27,7 @@ export class UserUpdateComponent implements OnInit {
   private dialogConfig;
   maxUserDescriptionFieldsLength = 1500;
   public user: UserDetailsResponse;
+  progress = 0;
 
   constructor(private location: Location, private repository: RepositoryService, private activeRoute: ActivatedRoute,
               private dialog: MatDialog, private errorHandler: ErrorHandlerService) { }
@@ -130,6 +131,7 @@ export class UserUpdateComponent implements OnInit {
     this.repository.update(apiUrl, user)
       .subscribe(res => {
           let dialogRef = this.dialog.open(SuccessDialogComponent, this.dialogConfig);
+          this.progress = this.repository.progress;
 
           //we are subscribing on the [mat-dialog-close] attribute as soon as we click on the dialog button
           dialogRef.afterClosed()

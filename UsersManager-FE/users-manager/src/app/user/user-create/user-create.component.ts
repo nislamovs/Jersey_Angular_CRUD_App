@@ -1,14 +1,12 @@
-import { RepositoryService } from './../../shared/repository.service';
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Location } from '@angular/common';
-import { UserRequest } from '../../_interface/userRequest.model';
-import {DateAdapter, MAT_DATE_FORMATS, MatDialog} from '@angular/material';
+import {RepositoryService} from './../../shared/repository.service';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Location} from '@angular/common';
+import {UserRequest} from '../../_interface/userRequest.model';
+import {MatDialog} from '@angular/material';
 import {SuccessDialogComponent} from "../../shared/dialogs/success-dialog/success-dialog.component";
 import {ErrorHandlerService} from "../../shared/error-handler.service";
 import {requiredFileType} from "../../shared/util/customValidator";
-import {UserResponse} from "../../_interface/userResponse.model";
-import {Description} from "../../_interface/description.model";
 
 @Component({
   selector: 'app-user-create',
@@ -20,6 +18,7 @@ export class UserCreateComponent implements OnInit {
 
   public userForm: FormGroup;
   private dialogConfig;
+  progress = 0;
   maxUserDescriptionFieldsLength = 500;
 
   constructor(private location: Location, private repository: RepositoryService, private dialog: MatDialog, private errorService: ErrorHandlerService) { }
@@ -80,8 +79,10 @@ export class UserCreateComponent implements OnInit {
     let apiUrl = 'users';
     this.repository.create(apiUrl, user)
       .subscribe(res => {
-          let dialogRef = this.dialog.open(SuccessDialogComponent, this.dialogConfig);
 
+          this.progress = this.repository.progress;
+
+          let dialogRef = this.dialog.open(SuccessDialogComponent, this.dialogConfig);
           //we are subscribing on the [mat-dialog-close] attribute as soon as we click on the dialog button
           dialogRef.afterClosed()
             .subscribe(result => {

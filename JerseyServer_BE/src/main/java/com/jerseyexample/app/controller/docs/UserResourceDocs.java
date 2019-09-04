@@ -9,11 +9,13 @@ import io.swagger.annotations.*;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import javax.ws.rs.BeanParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URISyntaxException;
 
 @Api(tags = { "User management" },  description = "Api calls for user operations")
 public interface UserResourceDocs {
@@ -30,7 +32,7 @@ public interface UserResourceDocs {
             @ApiResponse(code = 200, message = "All users are retrieved.", response = UserResponse.class),
             @ApiResponse(code = 400, message = "Something went wrong.", response = ErrorResponse.class)
     })
-    Response getAllUsers() throws URISyntaxException;
+    Response getAllUsers();
 
     @ApiOperation(
             httpMethod = "GET",
@@ -48,7 +50,7 @@ public interface UserResourceDocs {
     Response getPageOfUsers(@ApiParam(value="pageSize", required=false, defaultValue = "5") Integer pageSize,
                             @ApiParam(value="pageNumber", required=false, defaultValue = "1") Integer pageNumber,
                             @ApiParam(value="orderDirection", required=false, defaultValue = "asc") String orderDirection,
-                            @ApiParam(value="orderBy", required=false, defaultValue = "id") String orderBy) throws URISyntaxException;
+                            @ApiParam(value="orderBy", required=false, defaultValue = "id") String orderBy);
 
     @ApiOperation(
             httpMethod = "POST",
@@ -62,7 +64,7 @@ public interface UserResourceDocs {
             @ApiResponse(code = 201, message = "User created.", response = UserResponse.class),
             @ApiResponse(code = 400, message = "Something went wrong.", response = ErrorResponse.class)
     })
-    Response createUser(@ApiParam(value = "UserRequest object", required = true, name = "User request") UserRequest userRequest) throws URISyntaxException;
+    Response createUser(@ApiParam(value = "UserRequest object", required = true, name = "User request") @Valid UserRequest userRequest);
 
     @ApiOperation(
             httpMethod = "GET",
@@ -76,7 +78,7 @@ public interface UserResourceDocs {
             @ApiResponse(code = 200, message = "User retrieved.", response = UserResponse.class),
             @ApiResponse(code = 400, message = "Something went wrong.", response = ErrorResponse.class)
     })
-    Response getUserById(@ApiParam(value = "ID", required = true, name = "User id") long id) throws URISyntaxException;
+    Response getUserById(@ApiParam(value = "ID", required = true, name = "User id") @Min(value = 0, message = "Request params are invalid.") long id);
 
     @ApiOperation(
             httpMethod = "PUT",
@@ -90,7 +92,7 @@ public interface UserResourceDocs {
             @ApiResponse(code = 200, message = "User updated.", response = UserResponse.class),
             @ApiResponse(code = 400, message = "Something went wrong.", response = ErrorResponse.class)
     })
-    Response updateUser(@ApiParam(value = "UserRequest object", required = true, name = "User request") UserRequest userReq) throws URISyntaxException;
+    Response updateUser(@ApiParam(value = "UserRequest object", required = true, name = "User request") @Valid UserRequest userReq);
 
     @ApiOperation(
             httpMethod = "DELETE",
@@ -104,7 +106,7 @@ public interface UserResourceDocs {
             @ApiResponse(code = 204, message = "User deleted.", response = UserResponse.class),
             @ApiResponse(code = 400, message = "Something went wrong.", response = ErrorResponse.class)
     })
-    Response deleteUserById(@ApiParam(value = "ID", required = true, name = "User id") long id) throws URISyntaxException;
+    Response deleteUserById(@ApiParam(value = "ID", required = true, name = "User id") @Min(value = 1, message = "Request params are invalid.")  long id);
 
 
     @ApiOperation(
@@ -120,7 +122,7 @@ public interface UserResourceDocs {
             @ApiResponse(code = 400, message = "Something went wrong.", response = ErrorResponse.class),
             @ApiResponse(code = 415, message = "Dataformat was wrong.", response = ErrorResponse.class)
     })
-    Response createUserByForm(@ApiParam(value = "User form object", required = true, name = "User form request") CreateUserForm userForm) throws IOException;
+    Response createUserByForm(@ApiParam(value = "User form object", required = true, name = "User form request")  @BeanParam CreateUserForm userForm) throws IOException;
 
 
     @ApiOperation(

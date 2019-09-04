@@ -30,10 +30,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.Optional;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED_TYPE;
 
-@Component
 @Resource
 @Slf4j
 @Path("/")
@@ -100,7 +100,7 @@ public class UserResource implements UserResourceDocs {
     @Consumes({MediaType.MULTIPART_FORM_DATA, MediaType.APPLICATION_FORM_URLENCODED})
 //    @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response createUserByForm (@BeanParam CreateUserForm userForm) throws IOException {
+    public Response createUserByForm ( @BeanParam CreateUserForm userForm) throws IOException {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 

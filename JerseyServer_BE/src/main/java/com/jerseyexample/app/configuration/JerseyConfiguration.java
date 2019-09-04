@@ -41,9 +41,6 @@ public class JerseyConfiguration extends ResourceConfig {
 //Necessary to exclude to make possible launch standalone jar
 //        packages("com.jerseyexample.app");
 
-        property(ServletProperties.FILTER_FORWARD_ON_404, true);
-
-
         register(CorsConfiguration.class);
         register(UserResource.class);
         register(TestingResource.class);
@@ -54,6 +51,11 @@ public class JerseyConfiguration extends ResourceConfig {
         register(WadlResource.class);
 
         register(JERSEY_LOGGER);
+
+        property(ServletProperties.FILTER_FORWARD_ON_404, true);
+        property(ServerProperties.BV_SEND_ERROR_IN_RESPONSE, true);
+//        property(ServerProperties.FEATURE_AUTO_DISCOVERY_DISABLE, true);
+        property(BV_FEATURE_DISABLE, true);
     }
 
     private void configureSwagger() {

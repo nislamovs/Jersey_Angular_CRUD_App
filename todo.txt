@@ -80,7 +80,7 @@ Autopopulate birthdates                                                         
 
 Form validation doesn't work                                                            --
 Make error handling for constraint validation                                           --
-User creation - fix progress bar                                                        --
+User creation - fix progress bar                                                        OK
 Fix Angular CORS issue                                                                  OK
 Fix birthdate bug on update                                                             OK
 Fix problems with tasks in gradle ()                                                    OK

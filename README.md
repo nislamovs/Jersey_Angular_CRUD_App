@@ -35,7 +35,7 @@ Status : development
 
 - H2 in-memory storage is available from `https://localhost:8080/dbconsole`.
 
-- Backend could be launched from IDE as well. 
+- Backend could be launched via console ```./gradlew bootRun``` or from IDE as well. 
 
 **Frontend:**
 
