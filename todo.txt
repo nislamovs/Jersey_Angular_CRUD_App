@@ -42,9 +42,9 @@ Spring actuator - setup endpoints                                               
 Add .idea to gitignore                                                                  OK
 Check alignment in README                                                               OK
 
-Create Docker image for FE                                                              --
-Create Docker image for BE                                                              --
-Create docker compose script                                                            --
+Create Docker image for FE                                                              OK
+Create Docker image for BE                                                              OK
+Create docker compose script                                                            OK
 
 Create additional scripts for API                                                       OK
 vulnerabilities badge (FE)                                                              OK
@@ -78,7 +78,7 @@ Autopopulate birthdates                                                         
 
 -----------------------------------   BUGS:   ------------------------------------------
 
-Form validation doesn't work                                                            --
+Form validation doesn't work                                                            -- (For some reason Jersey validation doesn't work with SpringBoot)
 Make error handling for constraint validation                                           --
 User creation - fix progress bar                                                        OK
 Fix Angular CORS issue                                                                  OK

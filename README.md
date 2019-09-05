@@ -55,7 +55,9 @@ Status : development
 
 - To build docker image, go to project root directory and there run ```./gradlew clean build docker```
 
-- To export image in separate tar archive, go to _docker scripts directory_ ```Jersey_Angular_CRUD_App/scripts/docker```, and there run script ```create_image.sh```. You will find docker image (in tar format) in build directory: ```Jersey_Angular_CRUD_App/JerseyServer_BE/build/docker```.  
+- To export image in separate tar archive, go to _docker scripts directory_ ```Jersey_Angular_CRUD_App/scripts/docker```, and there run script ```create_image.sh```. You will find docker image (in tar format) in build directory: ```Jersey_Angular_CRUD_App/JerseyServer_BE/build/docker```.
+
+- To run all service (FE and BE) run ```docker-compose up```  
 
 #### Certificates:
 

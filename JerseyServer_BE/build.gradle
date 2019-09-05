@@ -41,8 +41,7 @@ apply from: "./gradle/dependencies.gradle"
 apply from: "./gradle/jacoco.gradle"
 apply from: "./gradle/swagger.gradle"
 apply from: "./gradle/tests.gradle"
-
-//apply from: "./gradle/docker.gradle"
+apply from: "./gradle/docker.gradle"
 
 
 group = 'com.jerseyexample'
@@ -69,8 +68,4 @@ bootJar {
     baseName = 'jerseyexample'
     version =  '1.0.0'
     mainClassName = 'com.jerseyexample.app.JerseydemoApplication'
-}
-
-task buildFE(type: Exec) {
-    commandLine '../scripts/fe_build/buildFE.sh'
 }

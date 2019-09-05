@@ -1,0 +1,17 @@
+version: '2.3'
+
+services:
+  frontend:
+    container_name: usermanager_fe
+    hostname: localhost
+    build:
+      context: UsersManager-FE
+      dockerfile: Dockerfile
+    ports:
+      - 8181:80
+  backend:
+    build:
+      context: JerseyServer_BE
+      dockerfile: Dockerfile
+    ports:
+      - 8081:8081
